@@ -1,0 +1,33 @@
+<style type="text/css"> 
+ 	table#prosp_view{width: 100%;}
+	table#prosp_view a{text-decoration: none;}
+  
+  table#prosp_view th{border-bottom: 1px solid #999;background: #f5cbcb;color: #000; font-size: 100%;font: "Verdana" sans-serif;}
+  table#prosp_view td{background: #FFF; border-bottom: 1px solid #c0c0c0;font-size: 90%;}
+</style>
+
+
+<h3>Übersicht der Registrierten Interessenten</h3>
+
+
+<table border="0" cellspacing="5" cellpadding="5" id="prosp_view">
+	<tr>
+		<th>Firma</th>
+		<th>Name des Interessenten</th>
+		<th>Position</th>
+		<th>Telefon</th>
+		<th>Status</th>
+		<th>&nbsp;</th>
+	</tr>
+	
+	<% @prospectives.each do |prosp| -%>
+		<tr>
+			<td><%= prosp.comp_name -%></td>
+			<td><%= "#{prosp.salutation} #{prosp.cont_first_name} #{prosp.cont_name}" -%></td>
+			<td><%= prosp.cont_position -%></td>
+			<td><%= prosp.cont_phone -%></td>
+			<td><%= prosp.prosp_status -%></td>			
+			<td><%= link_to "Details", admin_prospective_path(prosp) -%></td>
+		</tr>
+	<% end -%>
+</table>

@@ -1,0 +1,53 @@
+<style type="text/css"> 
+ table a{margin: 10px 25px;}
+</style>
+
+<h3>Übersicht über die Details des Interessenten <%= "#{@prosp.salutation} #{@prosp.cont_first_name} #{@prosp.cont_name}" -%></h3>
+
+<table border="0" cellspacing="5" cellpadding="5" id="prosp_view">
+	<tr>
+		<th>Firma</th><td><%= @prosp.comp_name -%></td>
+	</tr>
+	<tr>
+		<th>URL_IP</th><td><%= @prosp.comp_url_prefix -%></td>
+	</tr>
+	<tr>
+		<th>Land</th><td><%= @prosp.comp_country -%></td>
+	</tr>
+	<tr>
+		<th>Adresse</th><td><%= "#{@prosp.comp_zip_code} #{@prosp.comp_city} #{@prosp.comp_address}" -%></td>
+	</tr>
+	<tr>
+		<th>Name und Position</th><td><%= "#{@prosp.cont_first_name} #{@prosp.cont_name} - #{@prosp.cont_position}" -%></td>
+	</tr>
+	<tr>
+		<th>Kontaktdaten</th><td>Telefon: <%= @prosp.cont_phone + " - Email " + @prosp.cont_email -%></td>
+	</tr>
+	<tr>
+		<th>Interessiert an: </th>
+		<td>
+			Audit:<span style="text-align: right"><%= @prosp.topic_audit -%></span><br>
+			Genehmigungen:<span style="text-align: right"><%= @prosp.topic_legal_management -%></span><br>		
+			Öko-Controlling:<span style="text-align: right"><%= @prosp.topic_controlling -%></span><br>		
+			AnlagenManagement:<span style="text-align: right"><%= @prosp.topic_plants -%></span><br>		
+			Gefahrstoffe:<span style="text-align: right"><%= @prosp.topic_danger_goods -%></span><br>		
+		</td>
+	</tr>
+	<tr>
+		<th>Weitere Module an denen Interesse besteht</th>
+		<td><%= @prosp.topic_other -%></td>
+	</tr>
+	<tr>
+		<th>Einsatz von SaaS denkbar?</th>
+		<td><%= @prosp.use_saas -%></td>
+	</tr>
+	<tr>
+		<th>Weitere Meinungen Kommentare</th>
+		<td><%= @prosp.further_ideas -%></td>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align: right;font-size: 90%;">
+			<%= link_to "Eintrag Löschen", admin_prospective_path(@prosp), :confirm => "Eintrag wird gelöscht, Sind Sie sicher?", :method => :delete -%>  
+			<%= link_to "Zurück", admin_prospectives_path() -%></td>
+	</tr>
+</table>

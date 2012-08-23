@@ -1,0 +1,27 @@
+Hallo, 
+
+ich habe gerade festgestellt, dass sich ein neuer Interessent auf der Plattform registriert hat:
+
+Die folgenden Daten wurden auf der Plattform angegeben:
+
+Name des Unternehmens			<%= @prospective.comp_name + "\n"-%>
+Ort												<%= @prospective.comp_city + "\n"-%>
+Name des Mitarbeiters			<%= @prospective.cont_first_name -%><%= @prospective.cont_name + "\n" -%>
+Telefonnummer							<%= @prospective.cont_phone + "\n" -%>
+
+ÖkoControlling <%= @prospective.topic_controlling -%>
+Audit <%= @prospective.topic_audit -%>
+Rechtsmanagement <%= @prospective.topic_legal_management -%>
+Gefahrstoffe <%= @prospective.topic_danger_goods -%>
+Anlagenmangement <%= @prospective.topic_plants -%>
+
+Weitere Themen <%= @prospective.topic_other -%>
+
+
+Es wurden die folgenden weiteren Informationen Hinterlassen:
+
+<%= @prospective.further_ideas + "\n"-%>
+
+
+
+Ihr automatisches Benachrichtigungssystem
