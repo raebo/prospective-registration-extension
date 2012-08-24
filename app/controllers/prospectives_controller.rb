@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class ProspectivesController < ApplicationController
   radiant_layout 'start_layout'
   no_login_required
