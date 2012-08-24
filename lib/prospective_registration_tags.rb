@@ -7,7 +7,7 @@ module ProspectiveRegistrationTags
   desc %{
     
   }
-  #<r:new_siimby_prospective [name="test"] />
+  #<r:new_siimby_prospective link_name="test" div_id="link_zuur_anmeldung" />
   #, css_class="bt_register_now"
   tag "new_siimby_prospective" do |tag|
     
