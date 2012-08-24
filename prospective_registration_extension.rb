@@ -1,3 +1,4 @@
+#encoding: utf-8
 # Uncomment this if you reference any of your controllers in activate
 # require_dependency 'application_controller'
 
@@ -11,11 +12,21 @@ class ProspectiveRegistrationExtension < Radiant::Extension
      map.namespace :admin, :member => { :remove => :get } do |admin|
        admin.resources :prospectives
      end
+    #map.connect 'admin/prospective/:action', :controller => "admin/prospectives"
    end
   
+ # def activate
+ #   Page.send :include, ProspectiveRegistrationTags
+ #   admin.tabs.add "Interessenten Übersicht", "/admin/prospectives", :after => "Layouts", :visibility => [:all]
+ # end
   def activate
     Page.send :include, ProspectiveRegistrationTags
-    admin.tabs.add "Interessenten Übersicht", "/admin/prospectives", :after => "Layouts", :visibility => [:all]
+    tab "Content" do
+      add_item "ProspectiveRegistration",  "/admin/prospectives", :after => "Pages", :visibility => [:all]
+    end
+    #tab "" do
+
+    #end
   end
   
   def deactivate
