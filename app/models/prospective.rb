@@ -10,8 +10,8 @@ class Prospective < ActiveRecord::Base
   
   validates_presence_of :cont_gender
   validates_presence_of :cont_name
-  validates_presence_of :cont_first_name
-  validates_presence_of :cont_position
+  # validates_presence_of :cont_first_name
+  # validates_presence_of :cont_position
   #validates_presence_of :cont_phone
   validates_presence_of :cont_email
   

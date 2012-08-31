@@ -1,133 +1,77 @@
-<%#= error_messages_for :prospective, :header_message => "Bei der Erstellung Ihrer Anfrage traten Fehler auf" -%>	
+<% form_for(@prospective, :html => {:class => "form-horizontal", :id => "modal_register_form"}) do |f| %>
+  <div class="modal-footer">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Registrierung für einen Testzugang</h3>
+    </div>
+    <div class="modal-body" id="startRegisterModalBody">
+      <div id="prospAlert" class="alert alert-block alert-error hide">
+        <h4 class="alert-heading">Ihre Daten konnten nicht gespeichert werden</h4>
+        <p>Bitte füllen Sie alle Felder aus</p>
+      </div>
+        
+    <!-- <form class="form-horizontal" id="modal_register_form"> -->
+      <legend>Angaben zu Ihrer Person</legend>
+        <div class="control-group">
+          <label class="control-label" for="inputName">Anrede</label>
+          <div class="controls">
+            <%= f.radio_button :cont_gender, "m" %>
+            Herr
+            <%= f.radio_button :cont_gender, "f" %>
+            Frau
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputName">Name</label>
+          <div class="controls">
+            <%= f.text_field :cont_name, :placeholder => "Name des Ansprechpartners" %>
+          </div>  
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">E-Mail</label>
+          <div class="controls">
+            <%= f.text_field :cont_email, :placeholder => "Email des Ansprechpartners" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputTel">Telefonnr.</label>
+          <div class="controls">
+            <%= f.text_field :cont_phone, :placeholder => "Eine Tel.Nr. für Rückfragen" %>
+          </div>
+        </div>
 
-<% if @prospective.errors.size > 0 %>
-	<div class="errorExplanation" id="errorExplanation" style="margin-top: 5px;">
-		<h2>Beim Speichern Ihrer Anfrage traten Fehler auf!</h2>
-		<h2>Haben Sie alle Pflichtfelder ausgefüllt?</h2>
-	</div>
+        <legend>Angaben zu Ihrem Unternehmen</legend>
+        <div class="control-group">
+          <label class="control-label" for="inputNameCompany">Name (Unternehmen)</label>
+          <div class="controls">
+            <%= f.text_field :comp_name, :placeholder => "Name des Unternehmens" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputNameCompany">PLZ (Unternehmen)</label>
+          <div class="controls">
+            <%= f.text_field :comp_zip_code, :placeholder => "Ihr PLZ" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputNameCompany">Ort (Unternehmen)</label>
+          <div class="controls">
+            <%= f.text_field :comp_city, :placeholder => "Ihre Stadt" %>
+          </div>
+        </div>
+
+        <legend>Weitere Hinweise, Wünsche und Ergänzungen</legend>
+        <div class="control-group">
+          <%= f.text_area :further_ideas, :rows => 10, :style => "width: 450px;" -%>
+        </div>
+        
+        <!-- </form> -->
 <% end -%>
-
-<% remote_form_for(@prospective) do |f| %>
-
-<fieldset>
-	<legend>Angaben zum Unternehmen</legend>
-	<table>
-		<tr>
-			<th style="padding-top: 20px;"><%= f.label :comp_name, "Name des Unternehmens" %><span class="required">*</span></th>
-			<td style="padding-top: 20px;"><%= f.text_field :comp_name, :class => "default" %></td>
-		</tr>
-	<!-- 	<li>
-			<%= f.label :comp_url_prefix, "Bevorzugter URL-Prefix" %><%= f.text_field :comp_url_prefix %>
-		</li> -->
-		<tr>
-			<th><%= f.label :comp_country, "Herkunftsland" %><span class="required">*</span></th>
-			<td>
-				<%= f.radio_button :comp_country, "ger" %><span class="label_style">Deutschland</span>
-				<%= f.radio_button :comp_country, "au" %><span class="label_style">Östereich</span>
-				<%= f.radio_button :comp_country, "sui" %><span class="label_style">Schweiz</span>
-			</td>
-		</tr>
-		
-		<tr>
-			<th><%= f.label :comp_city, "Stadt" %></th><td><%= f.text_field :comp_city, :class => "default" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :comp_zip_code, "Postleitzahl" %></th><td><%= f.text_field :comp_zip_code, :class => "default" %></td>
-		</tr>
-		<tr>
-			<th><%= f.label :comp_address, "Anschrift" %></th><td><%= f.text_field :comp_address, :class => "default" %></td>
-		</tr>
-	</table>
-</fieldset>
-
-<fieldset class="alt">
-	<legend>Angaben zum Ansprechpartner</legend>
-	<table>
-		<tr>
-			<th style="padding-top: 20px;"><%= f.label :cont_gender, "Anrede" %><span class="required">*</span></th>
-			<td style="padding-top: 20px;">
-				<%= f.radio_button :cont_gender, "m" %><span class="label_style">Herr</span>
-				<%= f.radio_button :cont_gender, "f" %><span class="label_style">Frau</span>
-			</td>
-		</tr>		
-		
-		<tr><th><%= f.label :cont_name, "Nachname" %><span class="required">*</span></th><td><%= f.text_field :cont_name, :class => "default" %>
-			</td>
-		</tr>
-		
-		<tr><th><%= f.label :cont_first_name, "Vorname" %><span class="required">*</span></th><td><%= f.text_field :cont_first_name, :class => "default" %>
-			</td>
-		</tr>
-		
-		<tr><th><%= f.label :cont_position, "Rolle im Unternehmen" %><span class="required">*</span></th><td><%= f.text_field :cont_position, :class => "default" %>
-			</td>
-		</tr>
-		
-		<tr><th>
-			<%= f.label :cont_phone, "Telefonnr. für Rückfragen" %></th><td><%= f.text_field :cont_phone, :class => "default" %>
-				</td>
-			</tr>
-		
-		<tr><th>
-			<%= f.label :cont_email, "E-Mail Adresse" %><span class="required">*</span></th><td><%= f.text_field :cont_email, :class => "default" %>
-				</td>
-			</tr>
-		
-		<tr><td colspan="2"><div style="float: left;margin-left: 15px;"><span class="required">*</span><span style="font-size: 90%;">Pflichtfelder</span></div>	</td>
-		</tr>
-		
-	<!--	<li>
-			<%= f.label :add_text, "Zusätzliche Hinweise" %><%= f.text_area :add_text, :rows => 5, :cols => 28 %>
-		</li> -->
-	</table>
-</fieldset>
-
-<fieldset>
-	<legend>Hinweise und Vorschläge zum Einsatz der Software bei Ihnen im Unternehmen</legend>
-	<table>
-	  <tr>
-			<th style="padding-top: 20px;">
-				<%= f.label :topic_controlling, "Die folgenden Bereiche sind für von uns von besonderem Interesse" %>
-			</th>
-			<td style="padding-top: 20px;">
-				<%= f.check_box :topic_audit %><span class="label_style">Audits</span>
-			 	<%= f.check_box :topic_legal_management %><span class="label_style">Genehmigungen/Anlagen</span>
-			 	<%= f.check_box :topic_danger_goods %><span class="label_style">Gefahrstoffe</span>
-	   	 	<%= f.check_box :topic_controlling %><span class="label_style">Öko Controlling</span>
-			</td>
-	 </tr>
-	
-	 <tr>
-		<th>
-			<%= f.label :topic_controlling, "Darüber hinaus interessieren uns folgende Themen" %>
-		</th>
-		<td>
-	   <%= f.text_area :topic_other, :rows => "5", :cols => "55" %>
-		</td>
-	 </tr>
-	 <tr>
-		<th>
-	   <%= f.label :use_saas, "Könnten Sie sich vorstellen eine Lösung über das Internet zu nutzen?" %>
-		</th>
-		<td>
-		 <%= f.radio_button :use_saas, true %><span class="label_style">Ja</span>
-		 <%= f.radio_button :use_saas, false %><span class="label_style">Nein</span>
-		</td>
-	 </tr>
-	 <tr>
-		<th>
-	   <%= f.label :further_ideas, "Weitere Meinungen, Wünsche oder Vorschläge" %>
-		</th>
-		<td>
-	   <%= f.text_area :further_ideas, :rows => "5", :cols => "55" %>
-		</td>
-	 </tr>
-	</table>
-</fieldset>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success btn-large" id="prospectiveSubmit">Daten Absenden</button>
+    </div>
+  </div>
+    
 
 
-<fieldset class="submit"> 
-	<div style="float:right;"><%= submit_tag "Anfrage Abschicken" -%></div>
-</fieldset>
-
-<% end %>

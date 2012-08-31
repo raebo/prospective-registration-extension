@@ -7,6 +7,16 @@ module ProspectiveRegistrationTags
   desc %{
     
   }
+
+
+  tag "prospective_modal_link" do |tag|
+    return link_to_remote "Jetzt Anmelden",
+                          new_prospective_path,
+                          :class => "btn btn-success btn-large",
+                          "data-toggle" => "modal" 
+  end
+
+
   #<r:new_siimby_prospective link_name="test" div_id="link_zuur_anmeldung" />
   #, css_class="bt_register_now"
   tag "new_siimby_prospective" do |tag|
