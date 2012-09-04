@@ -50,7 +50,7 @@ class ProspectivesController < ApplicationController
 
     respond_to do |format|
       format.html{
-        render :layout => false, :status => 200
+        render :layout => false, :status => code 
       }
       format.js{
         # puts "is js request"
