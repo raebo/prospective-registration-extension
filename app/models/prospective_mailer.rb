@@ -6,7 +6,7 @@ class ProspectiveMailer < ActionMailer::Base
   # Diese E-Mail erhält der Interessent nach einer Anmeldung bei uns auf der Seite
   def welcome_prospective_email(prosp)
     
-    recipients prosp.cont_email
+    recipients [prosp.cont_email, "info@siimbyant.de"]
     # from "boris.raeschler@gmx.de"
     from "Siimbyant Kundenservice <kundenservice@siimbyant.de>"
     subject "Bestätigung Ihrer Registrierung"
